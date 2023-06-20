@@ -11,7 +11,14 @@ export const fetchTasks = createAsyncThunk(
   'tasks/fetchTasks',
   async () => {
     const response = await axiosInstance.get('http://127.0.0.1:3000/api/v1/tasks/');
-    console.log('Helo', response.data);
+    return response.data;
+  }
+)
+
+export const postTasks = createAsyncThunk(
+  'tasks/postTasks',
+  async (taskData) => {
+    const response = await axiosInstance.post('http://127.0.0.1:3000/api/v1/tasks/', taskData);
     return response.data;
   }
 )
