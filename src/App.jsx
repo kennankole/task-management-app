@@ -5,10 +5,6 @@ const App = () => {
       <h1>Welcome to task management</h1>
       <div className='task-elements'>
         <TasksList />
-      </div> 
-      <div>
-        <input placeholder='Enter task' ></input>
-        <input type='submit'></input>
       </div>
     </main>
   )
