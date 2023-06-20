@@ -1,8 +1,7 @@
 import { useEffect, useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
-import { fetchTasks } from "./taskSlice";
-import { postTasks } from "./taskSlice";
 import PropTypes from 'prop-types';
+import { fetchTasks, addTasks } from "./taskSlice";
 
 const TaskExcerpt = ({ task }) => {
   return (
@@ -10,7 +9,7 @@ const TaskExcerpt = ({ task }) => {
       <span>
         <input type='checkbox'></input>
       </span>
-      {task.name}
+      {task.name} | { task.id }
       <span>
         <button type='submit'>Delete</button>
         <button type='submit'>Edit</button>
@@ -32,9 +31,13 @@ const TasksList = () => {
   if (tasks.status === 'loading') {
     content = 'Loading...';
   } else if (tasks.status === 'succeeded') {
-    content = tasks.tasks.map((task) => (
-      <TaskExcerpt key={task.id} task={task} />
-    ))
+    content = (
+      <>
+        {tasks.tasks.map((task) => (
+          <TaskExcerpt key={task.id} task={task} />
+        ))}
+      </>
+    )
   } else if (tasks.status === 'failed') {
     content = <div>{tasks.error}</div>
   }
@@ -47,19 +50,14 @@ const TasksList = () => {
 
   const handleSubmitForm = (event) => {
     event.preventDefault();
-    alert(data);
     const task = {
-      id: 10,
       name: data,
       completed: false,
     }
-    dispatch(postTasks(task));
-    // content = updatedTasks.map((task) => (
-    //   <TaskExcerpt key={task.id} task={task} />
-    // ));
-
+    dispatch(addTasks(task));
     setData('');
   }
+
   return (
     <div>
       <ul>
