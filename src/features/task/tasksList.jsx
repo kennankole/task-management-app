@@ -1,6 +1,7 @@
 import { useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { fetchTasks } from "./taskSlice";
+import PropTypes from 'prop-types';
 
 const TaskExcerpt = ({ task }) => {
   return (
@@ -8,7 +9,7 @@ const TaskExcerpt = ({ task }) => {
       <span>
         <input type='checkbox'></input>
       </span>
-      <h4>{task.name}</h4>
+       {task.name}
       <span>
         <button type='submit'>Delete</button>
         <button type='submit'>Edit</button>
@@ -44,6 +45,12 @@ const TasksList = () => {
       {content}
     </ul>
   )
+}
+
+TaskExcerpt.propTypes = {
+  task: PropTypes.shape({
+    name: PropTypes.string.isRequired,
+  }).isRequired,
 }
 export default TasksList;
 
