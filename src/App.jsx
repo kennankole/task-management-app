@@ -1,5 +1,5 @@
 // import { useState } from 'react'
-import ShowTasks from './features/DisplayTasks'
+import ShowTasks from './features/task/tasksList'
 // import './App.css'
 
 const App = () => {
