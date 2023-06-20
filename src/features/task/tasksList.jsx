@@ -9,7 +9,7 @@ const TaskExcerpt = ({ task }) => {
       <span>
         <input type='checkbox'></input>
       </span>
-      {task.name} | { task.id }
+      {task.name}
       <span>
         <button type='submit'>Delete</button>
         <button type='submit'>Edit</button>

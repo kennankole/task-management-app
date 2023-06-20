@@ -6,7 +6,6 @@ const App = () => {
       <div className='task-elements'>
         <TasksList />
       </div>
-      
     </main>
   )
 }
