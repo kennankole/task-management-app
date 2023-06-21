@@ -1,6 +1,8 @@
 import { useEffect, useState } from "react";
 import { useDispatch } from "react-redux";
 import PropTypes from 'prop-types';
+import { FaTrash, FaEdit } from 'react-icons/fa';
+
 import { deleteTask, editTask } from "./taskSlice";
 
 const Task = ({ task }) => {
@@ -54,14 +56,7 @@ const Task = ({ task }) => {
   }
 
   return (
-    <li>
-      <span>
-        <input 
-          type='checkbox' 
-          onChange={handleStatusChange}
-          checked={editStatus}
-        />
-      </span>
+    <li className="task-elements">
       {editMode ? (
         <div>
           <input
@@ -83,13 +78,32 @@ const Task = ({ task }) => {
           </button>
         </div>
       ) : (
-        <>
-          {task.name} | {editStatus ? 'Done' : 'Not done'}
-          <span>
-            <button type='button' onClick={() => handleDelete(task.id)}>Delete</button>
-            <button type='button' onClick={enterEditMode}>Edit</button>
+        <div className="taskButtons">
+          <div className="task-title">
+            <span>
+              <input
+                type='checkbox'
+                onChange={handleStatusChange}
+                checked={editStatus}
+              />
+            </span>
+            {task.name} | {editStatus ? 'Done' : 'Not done'}
+          </div>
+          <span className="button-actions">
+            <button
+              type='button'
+              onClick={() => handleDelete(task.id)}
+            >
+              <FaTrash className="delBtn" />
+            </button>
+            <button
+              type='button'
+              onClick={enterEditMode}
+            >
+              <FaEdit className="editBtn" />
+            </button>
           </span>
-        </>
+        </div>
       )}
     </li>
   )

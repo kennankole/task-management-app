@@ -10,15 +10,44 @@ a:hover {
 
 ul {
   list-style-type: none;
-  display: flex;
-  align-content: center;
-  flex-direction: column;
-  justify-content: center;
   gap: 10px;
+  min-width: 450px;
 }
 
 main {
-  display: flex;
-  align-items: center;
-  flex-direction: column;
+  margin: 0 auto;
 }
+
+.ul-elements,
+.form-section {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.task-display {
+  padding: 6%;
+}
+
+.delBtn,
+.editBtn {
+  flex: 1;
+  font-size: 1rem;
+  color: grey;
+  border: none;
+  padding: 0 3%;
+}
+
+.taskButtons {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 2%;
+}
+
+.task-elements {
+  border: 1px solid black;
+  margin: 3%;
+  padding: 2%;
+}
+
