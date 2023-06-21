@@ -15,13 +15,13 @@ const App = () => {
 
   return (
     <main>
-      <h1>Welcome to task management</h1>
+      <h1 className='home-title'>Welcome to task management</h1>
       <div className='task-display'>
-        <div className='ul-elements'>
-          {tasks.length ? <TasksList tasks={tasks} /> : <p>{status}</p>}
-        </div>
         <div className="form-section">
           <AddTasks />
+        </div>
+        <div className='ul-elements'>
+          {tasks.length ? <TasksList tasks={tasks} /> : <p>{status}</p>}
         </div>
       </div>
     </main>

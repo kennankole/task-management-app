@@ -20,10 +20,16 @@ const AddTasks = () => {
     setData(event.target.value);
   }
   return (
-    <form onSubmit={handleSubmitForm}>
-      <input placeholder='Enter task' value={data} onChange={handleInput} />
-      <input type='submit' />
-    </form>
+    <div className="form">
+      <form onSubmit={handleSubmitForm}>
+        <input
+          placeholder='Enter task'
+          value={data} onChange={handleInput}
+          className="task-input"
+        />
+        <input type='submit' className="task-submit" />
+      </form>
+    </div>
   )
 }
 export default AddTasks;

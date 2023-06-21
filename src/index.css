@@ -1,3 +1,7 @@
+body {
+  background-color: rgb(205, 203, 201);
+}
+
 a {
   font-weight: 500;
   color: #646cff;
@@ -16,6 +20,7 @@ ul {
 
 main {
   margin: 0 auto;
+  padding: 4%;
 }
 
 .ul-elements,
@@ -26,7 +31,7 @@ main {
 }
 
 .task-display {
-  padding: 6%;
+  padding: 4%;
 }
 
 .delBtn,
@@ -46,8 +51,28 @@ main {
 }
 
 .task-elements {
-  border: 1px solid black;
+  border: 2px solid rgb(155, 151, 151);
+  background-color: rgb(232, 232, 228);
   margin: 3%;
-  padding: 2%;
+  padding: 3%;
+  border-radius: 4px;
 }
 
+form {
+  display: flex;
+  justify-content: center;
+  gap: 3%;
+  width: 100%;
+
+}
+
+.task-input {
+  padding: 10px 20px;
+  width: 100%;
+  border-radius: 4px;
+}
+
+.home-title {
+  text-align: center;
+  margin-bottom: -30px;
+}
