@@ -1,9 +1,13 @@
-import { useEffect, useState } from "react";
-import { useSelector, useDispatch } from "react-redux";
+import { useDispatch } from "react-redux";
 import PropTypes from 'prop-types';
-import { fetchTasks, addTasks } from "./taskSlice";
+import { deleteTask } from "./taskSlice";
 
-const TaskExcerpt = ({ task }) => {
+const Task = ({ task }) => {
+  const dispatch = useDispatch();
+
+  const handleDelete = (taskID) => {
+    dispatch(deleteTask(taskID))
+  }
   return (
     <li>
       <span>
@@ -11,73 +15,33 @@ const TaskExcerpt = ({ task }) => {
       </span>
       {task.name}
       <span>
-        <button type='submit'>Delete</button>
+        <button type='button' onClick={() => handleDelete(task.id)}>Delete</button>
         <button type='submit'>Edit</button>
       </span>
     </li>
   )
 }
 
-const TasksList = () => {
-  const dispatch = useDispatch();
-  const tasks = useSelector((state) => state.task);
-  useEffect(() => {
-    if (tasks.status === 'idle') {
-      dispatch(fetchTasks())
-    }
-  }, [tasks.status, dispatch])
+const TasksList = ({ tasks }) => (
+  <ul>
+    {tasks.map((task) => (
+      <Task key={task.id} task={task} />
+    ))}
+  </ul>
+)
 
-  let content = '';
-  if (tasks.status === 'loading') {
-    content = 'Loading...';
-  } else if (tasks.status === 'succeeded') {
-    content = (
-      <>
-        {tasks.tasks.map((task) => (
-          <TaskExcerpt key={task.id} task={task} />
-        ))}
-      </>
-    )
-  } else if (tasks.status === 'failed') {
-    content = <div>{tasks.error}</div>
-  }
-
-  const [data, setData] = useState('');
-
-  const handleInput = (event) => {
-    setData(event.target.value)
-  }
-
-  const handleSubmitForm = (event) => {
-    event.preventDefault();
-    const task = {
-      name: data,
-      completed: false,
-    }
-    dispatch(addTasks(task));
-    setData('');
-  }
-
-  return (
-    <div>
-      <ul>
-        {content}
-      </ul>
-      <div>
-        <form onSubmit={handleSubmitForm}>
-          <input placeholder='Enter task' value={data} onChange={handleInput} />
-          <input type='submit' />
-        </form>
-      </div>
-    </div>
-
-  )
-}
-
-TaskExcerpt.propTypes = {
-  task: PropTypes.shape({
+Task.propTypes = {
+  task: PropTypes.arrayOf({
     name: PropTypes.string.isRequired,
+    id: PropTypes.number.isRequired,
   }).isRequired,
 }
+
+TasksList.propTypes = {
+  tasks: PropTypes.arrayOf({
+    id: PropTypes.number.isRequired,
+    name: PropTypes.string.isRequired,
+  }).isRequired
+};
 export default TasksList;
 

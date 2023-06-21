@@ -1,11 +1,5 @@
-import { createSlice, createAsyncThunk  } from "@reduxjs/toolkit";
+import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 import axiosInstance from "../../axiosConfig";
-
-const initialState = {
-  tasks: [],
-  status: 'idle',
-  error: null
-}
 
 export const fetchTasks = createAsyncThunk(
   'tasks/fetchTasks',
@@ -23,9 +17,21 @@ export const addTasks = createAsyncThunk(
   }
 )
 
+export const deleteTask = createAsyncThunk(
+  'tasks/deleteTasks',
+  async (taskID) => {
+    await axiosInstance.delete(`http://127.0.0.1:3000/api/v1/tasks/${taskID}`);
+    return taskID;
+  }
+)
+
 const tasksSlice = createSlice({
   name: 'tasks',
-  initialState,
+  initialState: {
+    tasks: [],
+    status: 'idle',
+    error: null
+  },
   reducers: {},
 
   extraReducers(builder) {
@@ -33,10 +39,11 @@ const tasksSlice = createSlice({
       .addCase(fetchTasks.pending, (state) => {
         state.status = 'loading'
       })
-      .addCase(fetchTasks.fulfilled, (state, action) => {
-        state.status = 'succeeded'
-        state.tasks = action.payload;
-      })
+      .addCase(fetchTasks.fulfilled, (state, action) => ({
+        ...state,
+        tasks: action.payload
+      }))
+
       .addCase(fetchTasks.rejected, (state, action) => {
         state.status = 'failed'
         state.error = action.error.message
@@ -44,11 +51,23 @@ const tasksSlice = createSlice({
       .addCase(addTasks.pending, (state) => {
         state.status = 'loading';
       })
-      .addCase(addTasks.fulfilled, (state, action) => {
-        state.status = 'succeeded';
-        state.tasks.push(action.payload);
-      })
+      .addCase(addTasks.fulfilled, (state, action) => ({
+        ...state,
+        tasks: action.payload
+      }))
+
       .addCase(addTasks.rejected, (state, action) => {
+        state.status = 'failed';
+        state.error = action.error.message;
+      })
+      .addCase(deleteTask.pending, (state) => {
+        state.status = 'loading';
+      })
+      .addCase(deleteTask.fulfilled, (state, action) => {
+        state.status = 'succeeded';
+        state.tasks = state.tasks.filter((task) => task.id !== action.payload);
+      })
+      .addCase(deleteTask.rejected, (state, action) => {
         state.status = 'failed';
         state.error = action.error.message;
       })
