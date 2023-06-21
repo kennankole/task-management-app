@@ -23,7 +23,7 @@ const AddTasks = () => {
     <div className="form">
       <form onSubmit={handleSubmitForm}>
         <input
-          placeholder='Enter task'
+          placeholder='Add Task'
           value={data} onChange={handleInput}
           className="task-input"
         />

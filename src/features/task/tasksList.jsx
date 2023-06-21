@@ -67,7 +67,7 @@ const Task = ({ task }) => {
               className="edit-input"
             />
           </div>
-          <span className="edit-task-btn">
+          <div className="edit-task-btn">
             <button
               type="button"
               onClick={handleUpdateTask}
@@ -82,7 +82,7 @@ const Task = ({ task }) => {
             >
               Cancel
             </button>
-          </span>
+          </div>
         </div>
       ) : (
         <div className="taskButtons">
@@ -101,13 +101,13 @@ const Task = ({ task }) => {
               type='button'
               onClick={() => handleDelete(task.id)}
             >
-              <FaTrash className="delBtn" />
+              <FaTrash className="fa-icons" />
             </button>
             <button
               type='button'
               onClick={enterEditMode}
             >
-              <FaEdit className="editBtn" />
+              <FaEdit className="fa-icons" />
             </button>
           </span>
         </div>
