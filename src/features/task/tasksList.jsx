@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useDispatch } from "react-redux";
 import PropTypes from 'prop-types';
 import { deleteTask, editTask } from "./taskSlice";
@@ -7,6 +7,11 @@ const Task = ({ task }) => {
   const dispatch = useDispatch();
   const [editMode, setEditMode] = useState(false);
   const [editedTaskName, setEditedTaskName] = useState(task.name);
+  const [editStatus, setEditStaus] = useState(task.completed);
+
+  useEffect(() => {
+    setEditStaus(task.completed)
+  }, [task.completed])
 
   const enterEditMode = () => {
     setEditMode(true);
@@ -23,10 +28,14 @@ const Task = ({ task }) => {
     setEditedTaskName(event.target.value);
   };
 
+  const handleStatusChange = (event) => {
+    setEditStaus(event.target.checked)
+  }
+
   const handleUpdateTask = () => {
     const updatedData = {
       name: editedTaskName,
-      complete: task.completed,
+      complete: editStatus,
       id: task.id
     }
     dispatch(editTask(updatedData))
@@ -40,7 +49,11 @@ const Task = ({ task }) => {
   return (
     <li>
       <span>
-        <input type='checkbox'></input>
+        <input 
+          type='checkbox' 
+          onClick={handleStatusChange}
+          checked={editStatus}
+        />
       </span>
       {editMode ? (
         <div>
@@ -64,7 +77,7 @@ const Task = ({ task }) => {
         </div>
       ) : (
         <>
-          {task.name}
+          {task.name} | {editStatus ? 'Done' : 'Not done'}
           <span>
             <button type='button' onClick={() => handleDelete(task.id)}>Delete</button>
             <button type='button' onClick={enterEditMode}>Edit</button>
