@@ -15,7 +15,7 @@ const App = () => {
 
   return (
     <main>
-      <h1 className='home-title'>Welcome to task management</h1>
+      <h1 className='home-title'>Welcome to task management app</h1>
       <div className='task-display'>
         <div className="form-section">
           <AddTasks />
