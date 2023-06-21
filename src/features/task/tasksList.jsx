@@ -58,7 +58,7 @@ const Task = ({ task }) => {
       <span>
         <input 
           type='checkbox' 
-          onClick={handleStatusChange}
+          onChange={handleStatusChange}
           checked={editStatus}
         />
       </span>
