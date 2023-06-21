@@ -1,6 +1,8 @@
 import { useEffect, useState } from "react";
 import { useDispatch } from "react-redux";
 import PropTypes from 'prop-types';
+import { FaTrash, FaEdit } from 'react-icons/fa';
+
 import { deleteTask, editTask } from "./taskSlice";
 
 const Task = ({ task }) => {
@@ -54,42 +56,61 @@ const Task = ({ task }) => {
   }
 
   return (
-    <li>
-      <span>
-        <input 
-          type='checkbox' 
-          onChange={handleStatusChange}
-          checked={editStatus}
-        />
-      </span>
+    <li className="task-elements">
       {editMode ? (
-        <div>
-          <input
-            type="text"
-            value={editedTaskName}
-            onChange={handleTaskNameChange}
-          />
-          <button
-            type="button"
-            onClick={handleUpdateTask}
-          >
-            Save
-          </button>
-          <button
-            type="button"
-            onClick={exitEditMode}
-          >
-            Cancel
-          </button>
+        <div className="edit-container">
+          <div className="edit-input-container">
+            <input
+              type="text"
+              value={editedTaskName}
+              onChange={handleTaskNameChange}
+              className="edit-input"
+            />
+          </div>
+          <div className="edit-task-btn">
+            <button
+              type="button"
+              onClick={handleUpdateTask}
+              className="edit-btn"
+            >
+              Save
+            </button>
+            <button
+              type="button"
+              onClick={exitEditMode}
+              className="edit-btn"
+            >
+              Cancel
+            </button>
+          </div>
         </div>
       ) : (
-        <>
-          {task.name} | {editStatus ? 'Done' : 'Not done'}
-          <span>
-            <button type='button' onClick={() => handleDelete(task.id)}>Delete</button>
-            <button type='button' onClick={enterEditMode}>Edit</button>
+        <div className="taskButtons">
+          <div className="task-title">
+            <span>
+              <input
+                type='checkbox'
+                onChange={handleStatusChange}
+                checked={editStatus}
+              />
+            </span>
+            {task.name} | {editStatus ? 'Done' : 'Not done'}
+          </div>
+          <span className="button-actions">
+            <button
+              type='button'
+              onClick={() => handleDelete(task.id)}
+            >
+              <FaTrash className="fa-icons" />
+            </button>
+            <button
+              type='button'
+              onClick={enterEditMode}
+            >
+              <FaEdit className="fa-icons" />
+            </button>
           </span>
-        </>
+        </div>
       )}
     </li>
   )

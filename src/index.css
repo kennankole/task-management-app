@@ -1,24 +1,101 @@
-a {
-  font-weight: 500;
-  color: #646cff;
-  text-decoration: inherit;
-}
+@import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
 
-a:hover {
-  color: #535bf2;
+body {
+  background-color: rgb(205, 203, 201);
+  font-family: 'Roboto', sans-serif;
 }
 
 ul {
   list-style-type: none;
+  gap: 10px;
+  min-width: 450px;
+}
+
+.ul-elements,
+.form-section {
   display: flex;
-  align-content: center;
-  flex-direction: column;
   justify-content: center;
+  align-items: center;
+  font-family: 'Roboto', sans-serif;
+}
+
+.task-display {
+  padding: 4%;
+}
+
+.fa-icons {
+  flex: 1;
+  font-size: 1.3rem;
+  color: grey;
+  padding: 3%;
+  margin: 3%;
+}
+
+.taskButtons {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 2%;
+}
+
+.task-elements {
+  border: 2px solid rgb(155, 151, 151);
+  background-color: rgb(232, 232, 228);
+  margin: 3%;
+  padding: 3%;
+  border-radius: 4px;
+}
+
+form {
+  display: flex;
+  justify-content: center;
+  gap: 3%;
+  width: 100%;
+}
+
+.task-input {
+  padding: 10px 20px;
+  width: 100%;
+  border-radius: 4px;
+  font-family: 'Roboto', sans-serif;
+}
+
+.home-title {
+  text-align: center;
+  padding: 0 3%;
+}
+
+.edit-task-btn {
+  display: flex;
+  gap: 4%;
+}
+
+.edit-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
   gap: 10px;
 }
 
-main {
+.edit-input,
+.edit-btn {
+  padding: 8px 18px;
+  border: 1px solid rgb(187, 186, 186);
+  border-radius: 4px;
+  font-family: 'Roboto', sans-serif;
+}
+
+.button-actions {
   display: flex;
-  align-items: center;
-  flex-direction: column;
+  gap: 6%;
+}
+
+button {
+  border: none;
+  background-color: rgb(232, 232, 228);
+}
+
+input[type='submit'],
+input[type='text'] {
+  font-family: 'Roboto', sans-serif;
 }

@@ -15,9 +15,15 @@ const App = () => {
 
   return (
     <main>
-      <h1>Welcome to task management</h1>
-      {tasks.length ? <TasksList tasks={tasks} /> : <p>{status}</p> }
-      <AddTasks />
+      <h1 className='home-title'>Welcome to task management app</h1>
+      <div className='task-display'>
+        <div className="form-section">
+          <AddTasks />
+        </div>
+        <div className='ul-elements'>
+          {tasks.length ? <TasksList tasks={tasks} /> : <p>{status}</p>}
+        </div>
+      </div>
     </main>
   )
 }
