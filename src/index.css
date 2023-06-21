@@ -76,3 +76,15 @@ form {
   text-align: center;
   margin-bottom: -30px;
 }
+
+.edit-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 10px;
+}
+
+.edit-input, 
+.edit-btn {
+  padding: 8px 18px;
+}

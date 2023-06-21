@@ -58,24 +58,31 @@ const Task = ({ task }) => {
   return (
     <li className="task-elements">
       {editMode ? (
-        <div>
-          <input
-            type="text"
-            value={editedTaskName}
-            onChange={handleTaskNameChange}
-          />
-          <button
-            type="button"
-            onClick={handleUpdateTask}
-          >
-            Save
-          </button>
-          <button
-            type="button"
-            onClick={exitEditMode}
-          >
-            Cancel
-          </button>
+        <div className="edit-container">
+          <div className="edit-input-container">
+            <input
+              type="text"
+              value={editedTaskName}
+              onChange={handleTaskNameChange}
+              className="edit-input"
+            />
+          </div>
+          <span className="edit-task-btn">
+            <button
+              type="button"
+              onClick={handleUpdateTask}
+              className="edit-btn"
+            >
+              Save
+            </button>
+            <button
+              type="button"
+              onClick={exitEditMode}
+              className="edit-btn"
+            >
+              Cancel
+            </button>
+          </span>
         </div>
       ) : (
         <div className="taskButtons">
