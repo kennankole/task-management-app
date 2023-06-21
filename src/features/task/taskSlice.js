@@ -25,6 +25,15 @@ export const deleteTask = createAsyncThunk(
   }
 )
 
+export const editTask = createAsyncThunk(
+  'tasks/editTasks',
+  async (updatedTask) => {
+    const response = await axiosInstance.put(`http://127.0.0.1:3000/api/v1/tasks/${updatedTask.id}`, updatedTask);
+    return response.data;
+
+  }
+)
+
 const tasksSlice = createSlice({
   name: 'tasks',
   initialState: {
@@ -36,6 +45,8 @@ const tasksSlice = createSlice({
 
   extraReducers(builder) {
     builder
+
+      // Fetch tasks
       .addCase(fetchTasks.pending, (state) => {
         state.status = 'loading'
       })
@@ -43,11 +54,12 @@ const tasksSlice = createSlice({
         ...state,
         tasks: action.payload
       }))
-
       .addCase(fetchTasks.rejected, (state, action) => {
         state.status = 'failed'
         state.error = action.error.message
       })
+
+      // Add tasks
       .addCase(addTasks.pending, (state) => {
         state.status = 'loading';
       })
@@ -60,6 +72,8 @@ const tasksSlice = createSlice({
         state.status = 'failed';
         state.error = action.error.message;
       })
+
+      // Delete tasks
       .addCase(deleteTask.pending, (state) => {
         state.status = 'loading';
       })
@@ -70,6 +84,22 @@ const tasksSlice = createSlice({
       .addCase(deleteTask.rejected, (state, action) => {
         state.status = 'failed';
         state.error = action.error.message;
+      })
+
+      // Edit tasks 
+      .addCase(editTask.rejected, (state, action) => {
+        state.status = 'failed';
+        state.error = action.error.message
+      })
+      .addCase(editTask.fulfilled, (state, action) => {
+        const updatedTask = action.payload;
+        const taskIndex = state.tasks.findIndex((task) => task.id === updatedTask.id);
+        if (taskIndex !== -1) {
+          state.tasks[taskIndex] = { ...state.tasks[taskIndex], ...updatedTask };
+        }
+      })
+      .addCase(editTask.pending, (state) => {
+        state.status = 'loading';
       })
   }
 })
