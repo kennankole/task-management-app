@@ -7,10 +7,10 @@ const Task = ({ task }) => {
   const dispatch = useDispatch();
   const [editMode, setEditMode] = useState(false);
   const [editedTaskName, setEditedTaskName] = useState(task.name);
-  const [editStatus, setEditStaus] = useState(task.completed);
+  const [editStatus, setEditStatus] = useState(task.completed);
 
   useEffect(() => {
-    setEditStaus(task.completed)
+    setEditStatus(task.completed)
   }, [task.completed])
 
   const enterEditMode = () => {
@@ -29,14 +29,21 @@ const Task = ({ task }) => {
   };
 
   const handleStatusChange = (event) => {
-    setEditStaus(event.target.checked)
+    const newStatus = event.target.checked;
+    console.log(task);
+    setEditStatus(newStatus)
+
+    const updatedData = {
+      ...task,
+      completed: newStatus
+    };
+    dispatch(editTask(updatedData))
   }
 
   const handleUpdateTask = () => {
     const updatedData = {
+      ...task,
       name: editedTaskName,
-      complete: editStatus,
-      id: task.id
     }
     dispatch(editTask(updatedData))
     exitEditMode();
