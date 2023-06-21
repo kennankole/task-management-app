@@ -5,22 +5,11 @@ body {
   font-family: 'Roboto', sans-serif;
 }
 
-a {
-  font-weight: 500;
-  color: #646cff;
-  text-decoration: inherit;
-}
-
-a:hover {
-  color: #535bf2;
-}
-
 ul {
   list-style-type: none;
   gap: 10px;
   min-width: 450px;
 }
-
 
 .ul-elements,
 .form-section {
@@ -79,8 +68,8 @@ form {
 .edit-task-btn {
   display: flex;
   gap: 4%;
-
 }
+
 .edit-container {
   display: flex;
   justify-content: space-between;
@@ -88,7 +77,7 @@ form {
   gap: 10px;
 }
 
-.edit-input, 
+.edit-input,
 .edit-btn {
   padding: 8px 18px;
   border: 1px solid rgb(187, 186, 186);
@@ -104,7 +93,6 @@ form {
 button {
   border: none;
   background-color: rgb(232, 232, 228);
-  
 }
 
 input[type='submit'],
