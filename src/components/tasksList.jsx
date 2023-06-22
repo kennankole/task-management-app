@@ -3,7 +3,7 @@ import { useDispatch } from "react-redux";
 import PropTypes from 'prop-types';
 import { FaTrash, FaEdit } from 'react-icons/fa';
 
-import { deleteTask, editTask } from "./taskSlice";
+import { deleteTask, editTask } from "../features/task/taskSlice";
 
 const Task = ({ task }) => {
   const dispatch = useDispatch();

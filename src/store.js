@@ -1,9 +1,14 @@
-import { configureStore } from "@reduxjs/toolkit";
-import TaskReducer from './features/task/taskSlice';
+import { configureStore, combineReducers } from "@reduxjs/toolkit";
+import taskReducer from './features/task/taskSlice';
 
-const tasks = configureStore({
-  reducer: {
-    task: TaskReducer,
-  },
-});
-export default tasks;
+const rootReducer = combineReducers({
+  task: taskReducer
+})
+
+const setUpStore = (preloadedState) => {
+  return configureStore({
+    reducer: rootReducer,
+    preloadedState
+  })
+}
+export default setUpStore;
