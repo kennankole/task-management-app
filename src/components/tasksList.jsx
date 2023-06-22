@@ -3,13 +3,15 @@ import { useDispatch } from "react-redux";
 import PropTypes from 'prop-types';
 import { FaTrash, FaEdit } from 'react-icons/fa';
 
-import { deleteTask, editTask } from "../features/task/taskSlice";
+import { deleteTask, editTask } from "../features/task/tasksActionsCreators";
+import DeleteModal from "./DeleteModal";
 
 const Task = ({ task }) => {
   const dispatch = useDispatch();
   const [editMode, setEditMode] = useState(false);
   const [editedTaskName, setEditedTaskName] = useState(task.name);
   const [editStatus, setEditStatus] = useState(task.completed);
+  const [showDeleteModal, setShowDeleteModal] = useState(false);
 
   useEffect(() => {
     setEditStatus(task.completed)
@@ -51,8 +53,19 @@ const Task = ({ task }) => {
     exitEditMode();
   }
 
-  const handleDelete = (taskID) => {
-    dispatch(deleteTask(taskID))
+
+
+  const handleDelete = () => {
+    dispatch(deleteTask(task.id))
+    setShowDeleteModal(false);
+  }
+
+  const showDeleteConfirmation = () => {
+    setShowDeleteModal(true);
+  }
+
+  const closeDeleteConfirmation = () => {
+    setShowDeleteModal(false)
   }
 
   return (
@@ -99,18 +112,24 @@ const Task = ({ task }) => {
           <span className="button-actions">
             <button
               type='button'
-              onClick={() => handleDelete(task.id)}
+              onClick={showDeleteConfirmation}
             >
-              <FaTrash className="fa-icons" />
+              <FaTrash className="fa-icons delete" data-tooltip="Tooltip Text" />
             </button>
             <button
               type='button'
               onClick={enterEditMode}
             >
-              <FaEdit className="fa-icons" />
+              <FaEdit className="fa-icons edit" />
             </button>
           </span>
         </div>
+      )}
+      {showDeleteModal && (
+        <DeleteModal 
+          onCancel={closeDeleteConfirmation}
+          onDelete={handleDelete}
+        />
       )}
     </li>
   )

@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { useDispatch } from "react-redux";
-import { addTasks } from "../features/task/taskSlice";
+import { addTasks } from "../features/task/tasksActionsCreators";
 
 const AddTasks = () => {
   const dispatch = useDispatch()
