@@ -1,7 +1,7 @@
-import React from "react";
 import { render } from "@testing-library/react";
 import { Provider } from "react-redux";
 import setUpStore from "../store";
+
 
 export const renderWithProviders = (
   ui,
@@ -11,6 +11,7 @@ export const renderWithProviders = (
     ...renderOptions
   } = {}
 ) => {
+  // eslint-disable-next-line react/prop-types
   const Wrapper = ({ children }) => {
     return (
       <Provider store={store}>
