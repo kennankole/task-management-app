@@ -1,8 +1,8 @@
 import { useSelector, useDispatch } from 'react-redux';
 import { useEffect } from 'react';
-import { fetchTasks } from './features/task/taskSlice';
-import TasksList from './features/task/tasksList'
-import AddTasks from './features/task/AddTasks'
+import { fetchTasks } from '../features/task/taskSlice';
+import TasksList from '../features/task/tasksList'
+import AddTasks from './AddTasks'
 
 const App = () => {
   const dispatch = useDispatch();
