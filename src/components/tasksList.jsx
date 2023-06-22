@@ -114,13 +114,13 @@ const Task = ({ task }) => {
               type='button'
               onClick={showDeleteConfirmation}
             >
-              <FaTrash className="fa-icons" />
+              <FaTrash className="fa-icons delete" data-tooltip="Tooltip Text" />
             </button>
             <button
               type='button'
               onClick={enterEditMode}
             >
-              <FaEdit className="fa-icons" />
+              <FaEdit className="fa-icons edit" />
             </button>
           </span>
         </div>
