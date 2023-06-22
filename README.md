@@ -1,5 +1,8 @@
-<a name="readme-top"></a>
 
+![task-edit](https://github.com/kennankole/task-management-app/assets/39535023/336818ea-94e8-4777-a81c-d393574f2d8d)
+
+
+<a name="readme-top"></a>
 <div align="center">
 
   <h3><b>Task Management App</b></h3>
