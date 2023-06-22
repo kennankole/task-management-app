@@ -82,6 +82,8 @@ form {
   width: 100%;
   border-radius: 4px;
   font-family: 'Roboto', sans-serif;
+  border: 1px solid #ccc;
+  box-sizing: border-box;
 }
 
 .home-title {

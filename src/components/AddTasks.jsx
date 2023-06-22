@@ -27,7 +27,7 @@ const AddTasks = () => {
           value={data} onChange={handleInput}
           className="task-input"
         />
-        <input type='submit' className="task-submit" />
+        <input type='submit' value="Submit" className="task-submit" />
       </form>
     </div>
   )
