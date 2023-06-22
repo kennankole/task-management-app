@@ -4,6 +4,7 @@ import PropTypes from 'prop-types';
 import { FaTrash, FaEdit } from 'react-icons/fa';
 
 import { deleteTask, editTask } from "../features/task/tasksActionsCreators";
+import DeleteModal from "./DeleteModal";
 
 const Task = ({ task }) => {
   const dispatch = useDispatch();
@@ -54,8 +55,8 @@ const Task = ({ task }) => {
 
 
 
-  const handleDelete = (taskID) => {
-    dispatch(deleteTask(taskID))
+  const handleDelete = () => {
+    dispatch(deleteTask(task.id))
     setShowDeleteModal(false);
   }
 
@@ -125,20 +126,10 @@ const Task = ({ task }) => {
         </div>
       )}
       {showDeleteModal && (
-        <div className="modal-overlay">
-          <div className="delete-modal">
-            <h3>Confirm Delete</h3>
-            <p>Are you sure you want to delete this task?</p>
-            <div className="modal-buttons">
-              <button type="button" onClick={() => handleDelete(task.id)} className="confirm-delete">
-                Delete
-              </button>
-              <button type="button" onClick={closeDeleteConfirmation} className="cancel-delete">
-                Cancel
-              </button>
-            </div>
-          </div>
-        </div>
+        <DeleteModal 
+          onCancel={closeDeleteConfirmation}
+          onDelete={handleDelete}
+        />
       )}
     </li>
   )
