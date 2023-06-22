@@ -24,7 +24,7 @@ ul {
 }
 
 .task-submit {
-  background-color: #6FA6F1;
+  background-color: #6fa6f1;
   border: none;
   padding: 10px 20px;
   border-radius: 4px;
@@ -35,7 +35,7 @@ ul {
 }
 
 .task-submit:hover {
-  background-color: #1C76F1;
+  background-color: #1c76f1;
 }
 
 .fa-icons {
@@ -45,17 +45,15 @@ ul {
   padding: 3%;
   margin: 3%;
   transition: all ease-out 0.2s;
-
 }
 
 .fa-icons.delete:hover {
-  color: #FF6033;
+  color: #ff6033;
 }
 
 .fa-icons.edit:hover {
-  color: #1C76F1;
+  color: #1c76f1;
 }
-
 
 .taskButtons {
   display: flex;
@@ -112,16 +110,17 @@ form {
 }
 
 .edit-btn {
-  background-color: #6FA6F1;
+  background-color: #6fa6f1;
   color: #ffff;
   border: none;
   font-size: 0.9rem;
   font-weight: 600;
 }
 
-.edit-btn:hover{
-  background-color: #1C76F1;
+.edit-btn:hover {
+  background-color: #1c76f1;
 }
+
 .button-actions {
   display: flex;
   gap: 6%;
@@ -131,10 +130,7 @@ button {
   border: none;
   background-color: rgb(232, 232, 228);
   transition: all ease-in 0.2s;
-  
 }
-
-
 
 input[type='submit'],
 input[type='text'] {
@@ -185,15 +181,13 @@ input[type='text'] {
 }
 
 .delete-btn:hover {
-  background-color: #FF6033;
+  background-color: #ff6033;
   border: 1px solid #fff;
   color: #ffff;
 }
 
 .cancel-btn:hover {
-  background-color: #1C76F1;
+  background-color: #1c76f1;
   border: 1px solid #ffff;
   color: #ffff;
 }
-
-
