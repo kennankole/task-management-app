@@ -1,7 +1,7 @@
+/* eslint-disable no-undef */
 import { rest } from 'msw';
 import { setupServer } from 'msw/node';
 import { screen } from '@testing-library/react';
-import { beforeAll, afterEach, test, expect } from 'vitest'
 import { renderWithProviders } from "../utils/test-utils";
 import App from "./App";
 
@@ -18,7 +18,7 @@ export const handlers = [
 
 const server = setupServer(...handlers)
 
-beforeAll(() => server.listen())
+beforeAll(()=> server.listen())
 
 afterEach(() => server.resetHandlers())
 
