@@ -17,6 +17,11 @@
   - [🛠 Built With](#built-with)
     - [Tech Stack](#tech-stack)
     - [Key Features](#key-features)
+- [💻 Getting Started](#getting-started)
+  - [Setup](#setup)
+  - [Install](#install)
+  - [Usage](#usage)
+  - [Run tests](#run-tests)
   - [🚀 Live Demo](#live-demo)
 - [👥 Authors](#authors)
 - [🔭 Future Features](#future-features)
@@ -42,13 +47,6 @@ create, update, read, and delete tasks as well as mark tasks as `done` or `Not d
     <li><a href="https://redux.js.org/">Redux</a></li>
   </ul>
 </details>
-<details>
-<summary>Database</summary>
-  <ul>
-    <li><a href="https://www.postgresql.org/">PostgreSQL</a></li>
-  </ul>
-</details>
-
 <!-- Features -->
 
 ### Key Features <a name="key-features"></a>
@@ -57,8 +55,37 @@ create, update, read, and delete tasks as well as mark tasks as `done` or `Not d
 - **Edit A Task**
 - **Mark Task As Complete**
 
+
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
+## 💻 Getting Started <a name="getting-started"></a>
+To get a local copy up and running, follow these steps.
+
+In order to run this project you need to install `Node`
+
+### Setup
+```sh
+  git clone https://github.com/kennankole/task-management-app.git
+```
+
+### Install
+
+```sh
+  cd task-management-app
+  npm install
+```
+
+### Usage
+
+```sh
+  npm run dev
+```
+
+### Run tests
+
+```sh
+  npm test
+```
 <!-- LIVE DEMO -->
 
 ## 🚀 Live Demo <a name="live-demo"></a>
